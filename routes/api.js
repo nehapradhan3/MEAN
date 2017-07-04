@@ -36,22 +36,31 @@ router.get('/:resource', function(req, res, next){
 router.get('/:resource/:id', function(req, res, next){
   var resource= req.params.resource
   var id= req.params.id
-  if (resource == 'zone'){
-    ZoneController.findById(id, function(err, result){
-      if (err){
-        res.json({
+
+  var controller = controllers[resource]
+
+  if (controller == null){
+    res.json({
+      confirmation: 'fail',
+      message: 'Invalid Resource Request: '+resource
+    })
+    return
+  }
+  controller.findById(id, function(err, result){
+    if (err){
+      res.json({
         confirmation: 'fail',
         message: 'Not found'
       })
-        return
-      }
-      res.json({
-        confirmation: 'success',
-        result: result
-      })
-
+      return
+    }
+    res.json({
+      confirmation: 'success',
+      result: result
     })
-  }
+
+  })
+
 })
 
 router.post('/:resource',function(req, res, next){
@@ -60,9 +69,9 @@ router.post('/:resource',function(req, res, next){
     ZoneController.create(req.body, function(err, result){
       if(err){
         res.json({
-        confirmation: 'fail',
-        message: err
-      })
+          confirmation: 'fail',
+          message: err
+        })
         return
       }
       res.json({

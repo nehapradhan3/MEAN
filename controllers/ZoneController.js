@@ -18,10 +18,26 @@ module.exports = {
         callback(null, zone)
     })
   },
-  update: function(){
+  update: function(id, params, callback){
+    Zone.findByIdAndUpdate(id, params, {new:true} , function(err, zone){
+      if (err){
+        callback(err,null)
+        return
+      }
+callback(null, zone)
+
+    })
 
   },
   create: function(params, callback){
+    var zips = params['zipCodes']
+    var zip = zips.split(',')
+    var newZips= []
+    zip.forEach(function(zipcode){
+      newZips.push(zipcode.trim())
+    })
+    params['ZipCodes']= newZips
+
     Zone.create(params, function(err, zone){
       if (err){
         callback(err,null)
@@ -31,7 +47,14 @@ module.exports = {
     })
 
   },
-  destroy: function(){
+  delete: function(id, callback){
+    Zone.findByIdAndRemove(id, function(err){
+      if (err){
+        callback(err,null)
+        return
+      }
+        callback(null, null)
+    })
 
   }
 }

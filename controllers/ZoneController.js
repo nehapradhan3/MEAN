@@ -9,8 +9,14 @@ module.exports = {
           callback(null, zones)
     })
   },
-  findById: function(){
-
+  findById: function(id, callback){
+    Zone.findById(id,function(err, zone){
+      if (err){
+        callback(err,null)
+        return
+      }
+        callback(null, zone)
+    })
   },
   update: function(){
 

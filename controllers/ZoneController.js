@@ -21,7 +21,14 @@ module.exports = {
   update: function(){
 
   },
-  create: function(){
+  create: function(params, callback){
+    Zone.create(params, function(err, zone){
+      if (err){
+        callback(err,null)
+        return
+      }
+        callback(null, zone)
+    })
 
   },
   destroy: function(){

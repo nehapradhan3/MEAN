@@ -23,14 +23,14 @@ router.get('/:resource', function(req, res, next){
 })
 
 router.get('/:resource/:id', function(req, res, next){
-  var resource= request.params.resource
-  var id= rquest.params.id
+  var resource= req.params.resource
+  var id= req.params.id
   if (resource == 'zone'){
     ZoneController.findById(id, function(err, result){
       if (err){
         res.json({
         confirmation: 'fail',
-        message: err
+        message: 'Not found'
       })
         return
       }

@@ -5,6 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var ReactDOM = require('react-dom');
+var React = require('react');
+var ReactDOMServer = require('react-dom/server');
 
 var dbUrl='mongodb://localhost/yak-yik'
 mongoose.connect(dbUrl,function(err,res){

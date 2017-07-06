@@ -9782,7 +9782,7 @@ var App = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        'hello neha'
+        'Hello Neha'
       );
     }
   }]);
@@ -9790,7 +9790,7 @@ var App = function (_Component) {
   return App;
 }(_react.Component);
 
-ReactDom.render(_react2.default.createElement(App, null), document.getElementById('root'));
+_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
 
 /***/ }),
 /* 82 */

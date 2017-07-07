@@ -22548,13 +22548,13 @@ var Zone = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { style: { padding: 16, background: '#f9f9f9', marginTop: 12, border: '1px solid #ddd' } },
         _react2.default.createElement(
           'h2',
-          null,
+          { style: { marginBottom: 0 } },
           _react2.default.createElement(
             'a',
-            { href: '#' },
+            { style: { textDecoration: 'none', color: 'red' }, href: '#' },
             this.props.currentZone.name
           )
         ),

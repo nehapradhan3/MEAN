@@ -22522,9 +22522,9 @@ var _react = __webpack_require__(32);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(57);
+var _styles = __webpack_require__(186);
 
-var _reactDom2 = _interopRequireDefault(_reactDom);
+var _styles2 = _interopRequireDefault(_styles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22546,21 +22546,22 @@ var Zone = function (_Component) {
   _createClass(Zone, [{
     key: 'render',
     value: function render() {
+      var zoneStyle = _styles2.default.zone;
       return _react2.default.createElement(
         'div',
-        { style: styles.container },
+        { style: zoneStyle.container },
         _react2.default.createElement(
           'h2',
-          { style: { marginBottom: 0 } },
+          { style: zoneStyle.header },
           _react2.default.createElement(
             'a',
-            { style: { textDecoration: 'none', color: 'red' }, href: '#' },
+            { style: zoneStyle.title, href: '#' },
             this.props.currentZone.name
           )
         ),
         _react2.default.createElement(
           'span',
-          null,
+          { className: 'detail' },
           this.props.currentZone.aCode
         ),
         _react2.default.createElement('br', null),
@@ -22577,15 +22578,40 @@ var Zone = function (_Component) {
   return Zone;
 }(_react.Component);
 
-var styles = {
-  container: {
-    padding: 16,
-    background: '#f9f9f9',
-    marginTop: 12,
-    border: '1px solid #ddd'
-  }
-};
 exports.default = Zone;
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+
+  universal: {},
+  zone: {
+    container: {
+      padding: 16,
+      background: '#f9f9f9',
+      marginTop: 12,
+      border: '1px solid #ddd'
+    },
+    header: {
+      marginTop: 0,
+      marginBottom: 0
+    },
+    title: {
+      textDecoration: 'none',
+      color: 'red'
+
+    }
+  }
+
+};
 
 /***/ })
 /******/ ]);

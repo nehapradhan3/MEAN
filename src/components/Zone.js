@@ -7,7 +7,7 @@ class Zone extends Component {
     return(
 
 
-            <div style={{padding:16, background:'#f9f9f9', marginTop:12, border:'1px solid #ddd'}}>
+            <div style={styles.container}>
               <h2 style={{marginBottom:0}}>
               <a style={{textDecoration:'none', color:'red'}} href="#">{this.props.currentZone.name}</a>
               </h2>
@@ -16,6 +16,15 @@ class Zone extends Component {
             </div>
 
     )
+  }
+}
+
+const styles= {
+  container: {
+    padding:16,
+    background:'#f9f9f9',
+    marginTop:12,
+    border:'1px solid #ddd'
   }
 }
 export default Zone;

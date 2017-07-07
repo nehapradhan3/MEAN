@@ -13,7 +13,7 @@ class Zone extends Component {
               <a style={zoneStyle.title} href="#">{this.props.currentZone.name}</a>
               </h2>
               <span className="detail">{this.props.currentZone.aCode}</span><br />
-              <span>{this.props.currentZone.numComments} Comments</span>
+              <span className="detail">{this.props.currentZone.numComments} Comments</span>
             </div>
 
     )

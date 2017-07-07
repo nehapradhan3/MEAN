@@ -22468,46 +22468,33 @@ var Zones = function (_Component) {
   function Zones() {
     _classCallCheck(this, Zones);
 
-    return _possibleConstructorReturn(this, (Zones.__proto__ || Object.getPrototypeOf(Zones)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Zones.__proto__ || Object.getPrototypeOf(Zones)).call(this));
+
+    _this.state = {
+      list: [{ name: 'Zone 1', aCode: 'Design', numComments: 10 }, { name: 'Zone 2', aCode: 'Javascript', numComments: 11 }, { name: 'Zone 3', aCode: 'Network', numComments: 12 }, { name: 'Zone 4', aCode: 'Java', numComments: 13 }, { name: 'Zone 5', aCode: 'BPO', numComment: 14 }]
+    };
+    return _this;
   }
 
   _createClass(Zones, [{
     key: 'render',
     value: function render() {
+      var listItems = this.state.list.map(function (zone, i) {
+        return _react2.default.createElement(
+          'li',
+          null,
+          ' ',
+          _react2.default.createElement(_Zone2.default, { currentZone: zone }),
+          ' '
+        );
+      });
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(
           'ol',
           null,
-          _react2.default.createElement(
-            'li',
-            null,
-            '  ',
-            _react2.default.createElement(_Zone2.default, { name: 'Zone 1' }),
-            ' '
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            '  ',
-            _react2.default.createElement(_Zone2.default, { name: 'Zone 2' }),
-            ' '
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            '  ',
-            _react2.default.createElement(_Zone2.default, { name: 'Zone 3' }),
-            ' '
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            '  ',
-            _react2.default.createElement(_Zone2.default, { name: 'Zone 4' }),
-            ' '
-          )
+          listItems
         )
       );
     }
@@ -22568,19 +22555,20 @@ var Zone = function (_Component) {
           _react2.default.createElement(
             'a',
             { href: '#' },
-            this.props.name
+            this.props.currentZone.name
           )
         ),
         _react2.default.createElement(
           'span',
           null,
-          '10012'
+          this.props.currentZone.aCode
         ),
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           'span',
           null,
-          '10 comments'
+          this.props.currentZone.numComments,
+          ' Comments'
         )
       );
     }

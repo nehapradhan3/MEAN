@@ -22567,7 +22567,7 @@ var Zones = function (_Component) {
     _this.state = {
       zone: {
         name: '',
-        aCode: ''
+        zipCode: ''
       },
       list: []
     };
@@ -22636,7 +22636,7 @@ var Zones = function (_Component) {
         _react2.default.createElement('input', { id: 'name', onChange: this.updateZone.bind(this), className: 'form-control', type: 'text', placeholder: 'Name' }),
         ' ',
         _react2.default.createElement('br', null),
-        _react2.default.createElement('input', { id: 'aCode', onChange: this.updateZone.bind(this), className: 'form-control', type: 'text', placeholder: 'Zip Code' }),
+        _react2.default.createElement('input', { id: 'zipCode', onChange: this.updateZone.bind(this), className: 'form-control', type: 'text', placeholder: 'Zip Code' }),
         ' ',
         _react2.default.createElement('br', null),
         _react2.default.createElement(
@@ -22695,7 +22695,7 @@ var Zone = function (_Component) {
     key: 'render',
     value: function render() {
       var zoneStyle = _styles2.default.zone;
-      var aCode = this.props.currentZone.aCodes[0];
+      var zipCode = this.props.currentZone.zipCodes[0];
       return _react2.default.createElement(
         'div',
         { style: zoneStyle.container },
@@ -22711,7 +22711,7 @@ var Zone = function (_Component) {
         _react2.default.createElement(
           'span',
           { className: 'detail' },
-          aCode
+          zipCode
         ),
         _react2.default.createElement('br', null),
         _react2.default.createElement(

@@ -22548,12 +22548,31 @@ var Zones = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Zones.__proto__ || Object.getPrototypeOf(Zones)).call(this));
 
     _this.state = {
+      zone: {
+        name: '',
+        aCode: ''
+      },
       list: [{ name: 'Zone 1', aCode: 'Design', numComments: 10 }, { name: 'Zone 2', aCode: 'Javascript', numComments: 11 }, { name: 'Zone 3', aCode: 'Network', numComments: 12 }, { name: 'Zone 4', aCode: 'Java', numComments: 13 }, { name: 'Zone 5', aCode: 'BPO', numComment: 14 }]
     };
     return _this;
   }
 
   _createClass(Zones, [{
+    key: 'updateZone',
+    value: function updateZone(event) {
+      //console.log("updateZone :"+event.target.id+" ==="+event.target.value);
+      var updatedZone = Object.assign({}, this.state.zone);
+      updatedZone[event.target.id] = event.target.value;
+      this.setState({
+        zone: updatedZone
+      });
+    }
+  }, {
+    key: 'addZone',
+    value: function addZone() {
+      console.log('ADD ZONE:' + JSON.stringify(this.state.zone));
+    }
+  }, {
     key: 'render',
     value: function render() {
       var listItems = this.state.list.map(function (zone, i) {
@@ -22572,6 +22591,17 @@ var Zones = function (_Component) {
           'ol',
           null,
           listItems
+        ),
+        _react2.default.createElement('input', { id: 'name', onChange: this.updateZone.bind(this), className: 'form-control', type: 'text', placeholder: 'Name' }),
+        ' ',
+        _react2.default.createElement('br', null),
+        _react2.default.createElement('input', { id: 'aCode', onChange: this.updateZone.bind(this), className: 'form-control', type: 'text', placeholder: 'Zip Code' }),
+        ' ',
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.addZone.bind(this), className: 'btn btn-danger' },
+          'Add Zone'
         )
       );
     }

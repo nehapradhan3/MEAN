@@ -29,6 +29,11 @@ class Zones extends Component {
   }
   addZone(){
     console.log('ADD ZONE:'+JSON.stringify(this.state.zone));
+    let updatedList = Object.assign([],this.state.list)
+    updatedList.push(this.state.zone)
+    this.setState({
+      list: updatedList
+    })
   }
   render(){
     const listItems = this.state.list.map((zone, i) => {

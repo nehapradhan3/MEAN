@@ -22571,6 +22571,11 @@ var Zones = function (_Component) {
     key: 'addZone',
     value: function addZone() {
       console.log('ADD ZONE:' + JSON.stringify(this.state.zone));
+      var updatedList = Object.assign([], this.state.list);
+      updatedList.push(this.state.zone);
+      this.setState({
+        list: updatedList
+      });
     }
   }, {
     key: 'render',

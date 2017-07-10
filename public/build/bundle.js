@@ -9815,7 +9815,7 @@ var App = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        'FuseMachines',
+        _react2.default.createElement('img', { src: 'https://www.fusemachines.com/assets/img/fm-icn.png', style: { marginLeft: 20, marginTop: 20, width: 50, height: 50 } }),
         _react2.default.createElement(_Home2.default, null)
       );
     }

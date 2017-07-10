@@ -24764,6 +24764,10 @@ var _styles = __webpack_require__(198);
 
 var _styles2 = _interopRequireDefault(_styles);
 
+var _superagent = __webpack_require__(189);
+
+var _superagent2 = _interopRequireDefault(_superagent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24792,6 +24796,25 @@ var Comments = function (_Component) {
   }
 
   _createClass(Comments, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      console.log("componentDidMount: ");
+      _superagent2.default.get('/api/comment').query(null).set('Accept', 'application/json').end(function (err, response) {
+
+        if (err) {
+          alert('ERROR:' + err);
+          return;
+        }
+        console.log(JSON.stringify(response.body));
+        var results = response.body.results;
+        _this2.setState({
+          list: results
+        });
+      });
+    }
+  }, {
     key: 'submitComment',
     value: function submitComment() {
       console.log("submit comment:" + JSON.stringify(this.state.comment));
@@ -24833,6 +24856,16 @@ var Comments = function (_Component) {
 
       this.setState({
         comment: updatedComment
+      });
+    }
+  }, {
+    key: 'addZone',
+    value: function addZone() {
+      console.log('ADD COMMENT:' + JSON.stringify(this.state.comment));
+      var updatedList = Object.assign([], this.state.list);
+      updatedList.push(this.state.comment);
+      this.setState({
+        list: updatedList
       });
     }
   }, {

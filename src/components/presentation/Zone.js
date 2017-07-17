@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+  import React, { Component } from 'react'
 
 import styles from './styles'
 
@@ -6,7 +6,8 @@ class Zone extends Component {
 
   render(){
   const zoneStyle = styles.zone
-  const zipCode = this.props.currentZone.zipCodes[0]
+  const zipCode = this.props.currentZone.zipCodes
+  console.log("zipCode>>>>",zipCode);
     return(
 
             <div style={zoneStyle.container}>

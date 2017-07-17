@@ -7,7 +7,7 @@ class Zone extends Component {
   render(){
   const zoneStyle = styles.zone
   const zipCode = this.props.currentZone.zipCodes
-  console.log("zipCode>>>>",zipCode);
+
     return(
 
             <div style={zoneStyle.container}>

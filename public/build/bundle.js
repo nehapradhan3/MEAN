@@ -23635,7 +23635,7 @@ var Zone = function (_Component) {
     value: function render() {
       var zoneStyle = _styles2.default.zone;
       var zipCode = this.props.currentZone.zipCodes;
-      console.log("zipCode>>>>", zipCode);
+
       return _react2.default.createElement(
         'div',
         { style: zoneStyle.container },

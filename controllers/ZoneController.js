@@ -31,11 +31,14 @@ callback(null, zone)
   },
   create: function(params, callback){
     var zips = params['zipCodes']
-    var zip = zips.split(',')
-    var newZips= []
-    zip.forEach(function(zipcode){
-      newZips.push(zipcode.trim())
-    })
+    if (zips != null){
+      var zip = zips.split(',')
+      var newZips= []
+      zip.forEach(function(zipcode){
+        newZips.push(zipcode.trim())
+      })
+    }
+
     params['ZipCodes']= newZips
 
     Zone.create(params, function(err, zone){

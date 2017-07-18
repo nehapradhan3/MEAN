@@ -22622,9 +22622,10 @@ var Zones = function (_Component) {
   }, {
     key: 'addZone',
     value: function addZone() {
+      var _this3 = this;
 
       var updatedZone = Object.assign({}, this.state.zone);
-      updatedZone['zipCodes'] = updatedZone.zipCode.split(',');
+      updatedZone['zipCodes'] = updatedZone.zipCodes.split(',');
       console.log('ADD ZONE:' + JSON.stringify(updatedZone));
       _utils.APIManager.post('/api/zone', updatedZone, function (err, response) {
         if (err) {
@@ -22632,6 +22633,11 @@ var Zones = function (_Component) {
           return;
         }
         console.log('ZONE CREATED: ' + JSON.stringify(response));
+        var updatedList = Object.assign([], _this3.state.list);
+        updatedList.push(response.result);
+        _this3.setState({
+          list: updatedList
+        });
       });
 
       // let updatedList = Object.assign([],this.state.list)
@@ -22663,7 +22669,7 @@ var Zones = function (_Component) {
         _react2.default.createElement('input', { id: 'name', onChange: this.updateZone.bind(this), className: 'form-control', type: 'text', placeholder: 'Name' }),
         ' ',
         _react2.default.createElement('br', null),
-        _react2.default.createElement('input', { id: 'zipCode', onChange: this.updateZone.bind(this), className: 'form-control', type: 'text', placeholder: 'Zip Code' }),
+        _react2.default.createElement('input', { id: 'zipCodes', onChange: this.updateZone.bind(this), className: 'form-control', type: 'text', placeholder: 'Zip Code' }),
         ' ',
         _react2.default.createElement('br', null),
         _react2.default.createElement(
@@ -22722,7 +22728,7 @@ var Zone = function (_Component) {
     key: 'render',
     value: function render() {
       var zoneStyle = _styles2.default.zone;
-      var zipCode = this.props.currentZone.zipCode;
+      var zipCode = this.props.currentZone.zipCodes;
 
       return _react2.default.createElement(
         'div',

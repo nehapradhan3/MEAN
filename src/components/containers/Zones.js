@@ -8,15 +8,15 @@ class Zones extends Component {
     super()
     this.state = {
       zone: {
-        name:'',
-        zipCodes:''
+        name: '',
+        zipCodes: ''
       },
       list: []
     }
   }
   componentDidMount(){
     console.log("componentDidMount: ")
-    APIManager.get('/api/zone',null, (err, response) =>{
+    APIManager.get('/api/zone', null, (err, response) =>{
       if (err){
         alert('ERROR:'+err.message)
         return
@@ -39,7 +39,7 @@ class Zones extends Component {
   addZone(){
 
 let updatedZone = Object.assign({},this.state.zone)
-updatedZone['zipCodes'] = updatedZone.zipCode.split(',')
+updatedZone['zipCodes'] = updatedZone.zipCodes.split(',')
 console.log('ADD ZONE:'+JSON.stringify(updatedZone));
   APIManager.post('/api/zone', updatedZone,(err, response) =>{
     if(err){
@@ -47,6 +47,11 @@ console.log('ADD ZONE:'+JSON.stringify(updatedZone));
       return
     }
     console.log('ZONE CREATED: '+JSON.stringify(response));
+ let updatedList = Object.assign([],this.state.list)
+updatedList.push(response.result)
+this.setState({
+  list: updatedList
+})
   })
 
     // let updatedList = Object.assign([],this.state.list)
@@ -68,7 +73,7 @@ console.log('ADD ZONE:'+JSON.stringify(updatedZone));
       {listItems}
     </ol>
     <input id="name" onChange={this.updateZone.bind(this)} className="form-control" type="text" placeholder="Name" /> <br />
-    <input id="zipCode" onChange={this.updateZone.bind(this)} className="form-control" type="text" placeholder="Zip Code" /> <br />
+    <input id="zipCodes" onChange={this.updateZone.bind(this)} className="form-control" type="text" placeholder="Zip Code" /> <br />
     <button onClick={this.addZone.bind(this)} className="btn btn-danger">Add Zone</button>
       </div>
     )

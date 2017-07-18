@@ -24875,8 +24875,8 @@ var Comments = function (_Component) {
     _this.state = {
       comment: {
         username: '',
-        body: '',
-        timestamp: ''
+        body: ''
+
       },
       list: []
     };
@@ -24903,12 +24903,28 @@ var Comments = function (_Component) {
   }, {
     key: 'submitComment',
     value: function submitComment() {
-      console.log("submit comment:" + JSON.stringify(this.state.comment));
-      var updatedList = Object.assign([], this.state.list);
-      updatedList.push(this.state.comment);
+      var _this3 = this;
 
-      this.setState({
-        list: updatedList
+      console.log("submit comment:" + JSON.stringify(this.state.comment));
+      //     let updatedList = Object.assign([], this.state.list)
+      // updatedList.push(this.state.comment)
+      //
+      // this.setState({
+      //   list: updatedList
+      // })
+
+
+      _utils.APIManager.post('/api/comment', this.state.comment, function (err, response) {
+        if (err) {
+          alert(err);
+          return;
+        }
+        console.log(JSON.stringify(response));
+        var updatedList = Object.assign([], _this3.state.list);
+        updatedList.push(response.result);
+        _this3.setState({
+          list: updatedList
+        });
       });
     }
   }, {
@@ -24928,17 +24944,6 @@ var Comments = function (_Component) {
       // console.log('updateBody:'+event.target.value);
       var updatedComment = Object.assign({}, this.state.comment);
       updatedComment['body'] = event.target.value;
-
-      this.setState({
-        comment: updatedComment
-      });
-    }
-  }, {
-    key: 'updateTimestamp',
-    value: function updateTimestamp(event) {
-      // console.log('updateTimestamp:'+event.target.value);
-      var updatedComment = Object.assign({}, this.state.comment);
-      updatedComment['timestamp'] = event.target.value;
 
       this.setState({
         comment: updatedComment
@@ -24985,9 +24990,6 @@ var Comments = function (_Component) {
           ' ',
           _react2.default.createElement('br', null),
           _react2.default.createElement('input', { onChange: this.updateBody.bind(this), className: 'form-control', type: 'text', placeholder: 'Comment' }),
-          ' ',
-          _react2.default.createElement('br', null),
-          _react2.default.createElement('input', { onChange: this.updateTimestamp.bind(this), className: 'form-control', type: 'text', placeholder: 'Timestamp' }),
           ' ',
           _react2.default.createElement('br', null),
           _react2.default.createElement(

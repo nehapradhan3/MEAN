@@ -9,8 +9,8 @@ class Comments extends Component {
     this.state = {
       comment:{
         username:'',
-        body:'',
-        timestamp:''
+        body:''
+
       },
       list: []
     }
@@ -27,15 +27,29 @@ class Comments extends Component {
         list: response.results
       })
     })
-  
+
   }
   submitComment(){
     console.log("submit comment:"+JSON.stringify(this.state.comment));
-    let updatedList = Object.assign([], this.state.list)
-updatedList.push(this.state.comment)
+//     let updatedList = Object.assign([], this.state.list)
+// updatedList.push(this.state.comment)
+//
+// this.setState({
+//   list: updatedList
+// })
 
+
+APIManager.post('/api/comment', this.state.comment, (err, response) => {
+if (err){
+  alert(err)
+  return
+}
+console.log(JSON.stringify(response));
+let updatedList = Object.assign([], this.state.list)
+updatedList.push(response.result)
 this.setState({
   list: updatedList
+})
 })
   }
   updateUsername(event){
@@ -56,15 +70,7 @@ updatedComment['username'] = event.target.value
           comment: updatedComment
         })
   }
-  updateTimestamp(event){
-    // console.log('updateTimestamp:'+event.target.value);
-    let updatedComment = Object.assign({}, this.state.comment)
-    updatedComment['timestamp'] = event.target.value
 
-        this.setState({
-          comment: updatedComment
-        })
-  }
 
   addZone(){
     console.log('ADD COMMENT:'+JSON.stringify(this.state.comment));
@@ -92,7 +98,7 @@ updatedComment['username'] = event.target.value
 
       <input onChange={this.updateUsername.bind(this)} className="form-control" type="text" placeholder="Username" /> <br/>
       <input onChange={this.updateBody.bind(this)} className="form-control" type="text" placeholder="Comment" /> <br/>
-      <input onChange={this.updateTimestamp.bind(this)} className="form-control" type="text" placeholder="Timestamp" /> <br/>
+
       <button onClick={this.submitComment.bind(this)} className="btn btn-info"> Submit Comment </button>
       </div>
       </div>

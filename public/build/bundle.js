@@ -22619,13 +22619,13 @@ var Zones = function (_Component) {
     }
   }, {
     key: 'addZone',
-    value: function addZone() {
+    value: function addZone(zone) {
       var _this3 = this;
 
-      var updatedZone = Object.assign({}, this.state.zone);
-      updatedZone['zipCodes'] = updatedZone.zipCodes.split(',');
-      console.log('ADD ZONE:' + JSON.stringify(updatedZone));
-      _utils.APIManager.post('/api/zone', updatedZone, function (err, response) {
+      //let updatedZone = Object.assign({},this.state.zone)
+      zone['zipCodes'] = zone.zipCodes.split(',');
+      console.log('ADD ZONE:' + JSON.stringify(zone));
+      _utils.APIManager.post('/api/zone', zone, function (err, response) {
         if (err) {
           alert('ERROR ' + err.message);
           return;
@@ -22664,7 +22664,7 @@ var Zones = function (_Component) {
           null,
           listItems
         ),
-        _react2.default.createElement(_presentation.CreateZone, null)
+        _react2.default.createElement(_presentation.CreateZone, { onCreate: this.addZone.bind(this) })
       );
     }
   }]);
@@ -25246,6 +25246,7 @@ var CreateZone = function (_Component) {
     key: "submitZone",
     value: function submitZone(event) {
       console.log("submit zone" + JSON.stringify(this.state.zone));
+      this.props.onCreate(this.state.zone);
     }
   }, {
     key: "render",

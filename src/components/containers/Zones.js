@@ -36,12 +36,11 @@ class Zones extends Component {
       zone: updatedZone
     })
   }
-  addZone(){
-
-let updatedZone = Object.assign({},this.state.zone)
-updatedZone['zipCodes'] = updatedZone.zipCodes.split(',')
-console.log('ADD ZONE:'+JSON.stringify(updatedZone));
-  APIManager.post('/api/zone', updatedZone,(err, response) =>{
+  addZone(zone){
+//let updatedZone = Object.assign({},this.state.zone)
+zone['zipCodes'] = zone.zipCodes.split(',')
+console.log('ADD ZONE:'+JSON.stringify(zone));
+  APIManager.post('/api/zone', zone,(err, response) =>{
     if(err){
       alert('ERROR '+err.message)
       return
@@ -73,7 +72,7 @@ this.setState({
       {listItems}
     </ol>
 
-        <CreateZone />
+        <CreateZone onCreate={this.addZone.bind(this)}/>
       </div>
     )
   }

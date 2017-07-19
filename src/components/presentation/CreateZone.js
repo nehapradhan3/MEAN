@@ -18,6 +18,7 @@ this.setState({
   }
   submitZone(event){
 console.log("submit zone"+JSON.stringify(this.state.zone));
+this.props.onCreate(this.state.zone)
   }
 
   render(){

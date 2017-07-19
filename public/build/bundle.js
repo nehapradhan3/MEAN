@@ -24921,28 +24921,6 @@ var Comments = function (_Component) {
       });
     }
   }, {
-    key: 'updateUsername',
-    value: function updateUsername(event) {
-      // console.log("updateUsername:"+event.target.value);
-      var updatedComment = Object.assign({}, this.state.comment);
-      updatedComment['username'] = event.target.value;
-
-      this.setState({
-        comment: updatedComment
-      });
-    }
-  }, {
-    key: 'updateBody',
-    value: function updateBody(event) {
-      // console.log('updateBody:'+event.target.value);
-      var updatedComment = Object.assign({}, this.state.comment);
-      updatedComment['body'] = event.target.value;
-
-      this.setState({
-        comment: updatedComment
-      });
-    }
-  }, {
     key: 'addZone',
     value: function addZone() {
       console.log('ADD COMMENT:' + JSON.stringify(this.state.comment));

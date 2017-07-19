@@ -48,25 +48,6 @@ this.setState({
 })
 })
   }
-  updateUsername(event){
-// console.log("updateUsername:"+event.target.value);
-let updatedComment = Object.assign({}, this.state.comment)
-updatedComment['username'] = event.target.value
-
-    this.setState({
-      comment: updatedComment
-    })
-  }
-  updateBody(event){
-    // console.log('updateBody:'+event.target.value);
-    let updatedComment = Object.assign({}, this.state.comment)
-    updatedComment['body'] = event.target.value
-
-        this.setState({
-          comment: updatedComment
-        })
-  }
-
 
   addZone(){
     console.log('ADD COMMENT:'+JSON.stringify(this.state.comment));

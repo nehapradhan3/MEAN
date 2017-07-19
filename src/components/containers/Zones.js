@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Zone from '../presentation/Zone'
+import { CreateZone, Zone } from '../presentation'
 
 import { APIManager } from '../../utils'
 
@@ -72,9 +72,8 @@ this.setState({
       <ol>
       {listItems}
     </ol>
-    <input id="name" onChange={this.updateZone.bind(this)} className="form-control" type="text" placeholder="Name" /> <br />
-    <input id="zipCodes" onChange={this.updateZone.bind(this)} className="form-control" type="text" placeholder="Add a topic for discussion" /> <br />
-    <button onClick={this.addZone.bind(this)} className="btn btn-danger">Add Zone</button>
+
+        <CreateZone />
       </div>
     )
   }

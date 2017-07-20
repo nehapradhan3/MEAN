@@ -7,10 +7,7 @@ class Zones extends Component {
   constructor(){
     super()
     this.state = {
-      zone: {
-        name: '',
-        zipCodes: ''
-      },
+      selected: 0,
       list: []
     }
   }
@@ -28,18 +25,11 @@ class Zones extends Component {
     })
 
   }
-  updateZone(event){
-    //console.log("updateZone :"+event.target.id+" ==="+event.target.value);
-    let updatedZone = Object.assign({},this.state.zone)
-    updatedZone[event.target.id] = event.target.value
-    this.setState({
-      zone: updatedZone
-    })
-  }
+
   addZone(zone){
-//let updatedZone = Object.assign({},this.state.zone)
+
 zone['zipCodes'] = zone.zipCodes.split(',')
-console.log('ADD ZONE:'+JSON.stringify(zone));
+
   APIManager.post('/api/zone', zone,(err, response) =>{
     if(err){
       alert('ERROR '+err.message)
@@ -62,7 +52,7 @@ this.setState({
   render(){
     const listItems = this.state.list.map((zone, i) => {
       return(
-        <li key={i}> <Zone currentZone={zone} /> </li>
+        <li key={i}> <Zone is selected={false} currentZone={zone} /> </li>
       )
 
     })

@@ -18,7 +18,9 @@ this.setState({
   }
   submitZone(event){
 console.log("submit zone"+JSON.stringify(this.state.zone));
-this.props.onCreate(this.state.zone)
+let updated = Object.assign({}, this.state.zone)
+updated['zipCodes'] = updated.zipCode.split(',')
+this.props.onCreate(updated)
   }
 
   render(){

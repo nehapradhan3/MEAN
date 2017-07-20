@@ -7,7 +7,7 @@ class Zone extends Component {
   render(){
   const zoneStyle = styles.zone
   const zipCode = this.props.currentZone.zipCodes
-  const title = (this.props.isSelected) ?  <a style={zoneStyle.title} href="#">{this.props.currentZone.name}</a> :   <a href="#">{this.props.currentZone.name}</a>
+  const title = (this.props.isSelected) ?  <a style={zoneStyle.title} href="#">{this.props.currentZone.name}</a> :  <a href="#">{this.props.currentZone.name}</a>
     return(
 
             <div style={zoneStyle.container}>

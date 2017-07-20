@@ -22668,12 +22668,15 @@ var Zones = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this4 = this;
+
       var listItems = this.state.list.map(function (zone, i) {
+        var selected = i == _this4.state.selected;
         return _react2.default.createElement(
           'li',
           { key: i },
           ' ',
-          _react2.default.createElement(_presentation.Zone, { is: true, selected: false, currentZone: zone }),
+          _react2.default.createElement(_presentation.Zone, { isSelected: selected, currentZone: zone }),
           ' '
         );
       });

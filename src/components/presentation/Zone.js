@@ -4,6 +4,11 @@ import styles from './styles'
 
 class Zone extends Component {
 
+onSelectTitle(event){
+  event.preventDefault()
+  console.log("onSelectTitle" +this.props.index);
+  this.props.select(this.props.index)
+}
   render(){
   const zoneStyle = styles.zone
   const zipCode = this.props.currentZone.zipCodes
@@ -11,7 +16,7 @@ class Zone extends Component {
     return(
 
             <div style={zoneStyle.container}>
-              <h2 style={zoneStyle.header}>
+              <h2 onClick={this.onSelectTitle.bind(this)} style={zoneStyle.header}>
             { title }
               </h2>
               <span className="detail">{zipCode}</span><br />

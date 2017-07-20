@@ -22616,7 +22616,7 @@ var Zones = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Zones.__proto__ || Object.getPrototypeOf(Zones)).call(this));
 
     _this.state = {
-      selected: 0,
+      selected: 1,
       list: []
     };
     return _this;
@@ -22658,12 +22658,14 @@ var Zones = function (_Component) {
           list: updatedList
         });
       });
-
-      // let updatedList = Object.assign([],this.state.list)
-      // updatedList.push(this.state.zone)
-      // this.setState({
-      //   list: updatedList
-      // })
+    }
+  }, {
+    key: 'selectZone',
+    value: function selectZone(index) {
+      console.log("SelectZone: " + index);
+      this.setState({
+        selected: index
+      });
     }
   }, {
     key: 'render',
@@ -22675,8 +22677,7 @@ var Zones = function (_Component) {
         return _react2.default.createElement(
           'li',
           { key: i },
-          ' ',
-          _react2.default.createElement(_presentation.Zone, { isSelected: selected, currentZone: zone }),
+          _react2.default.createElement(_presentation.Zone, { index: i, select: _this4.selectZone.bind(_this4), isSelected: selected, currentZone: zone }),
           ' '
         );
       });
@@ -22979,6 +22980,13 @@ var Zone = function (_Component) {
   }
 
   _createClass(Zone, [{
+    key: 'onSelectTitle',
+    value: function onSelectTitle(event) {
+      event.preventDefault();
+      console.log("onSelectTitle" + this.props.index);
+      this.props.select(this.props.index);
+    }
+  }, {
     key: 'render',
     value: function render() {
       var zoneStyle = _styles2.default.zone;
@@ -22997,7 +23005,7 @@ var Zone = function (_Component) {
         { style: zoneStyle.container },
         _react2.default.createElement(
           'h2',
-          { style: zoneStyle.header },
+          { onClick: this.onSelectTitle.bind(this), style: zoneStyle.header },
           title
         ),
         _react2.default.createElement(

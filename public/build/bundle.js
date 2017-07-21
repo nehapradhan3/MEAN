@@ -9870,7 +9870,7 @@ var App = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('img', { src: 'https://www.fusemachines.com/assets/img/fm-icn.png', style: { marginLeft: 120, marginTop: 2, marginBottom: 40, width: 50, height: 50 } }),
+        _react2.default.createElement('img', { src: 'https://www.fusemachines.com/assets/img/fm-icn.png', style: { marginLeft: 300, marginTop: 2, marginBottom: 40, width: 50, height: 50 } }),
         _react2.default.createElement(
           'span',
           { style: { marginLeft: 10, marginTop: 20, width: 50, height: 50, fontSize: 50, fontStyle: "italic" } },

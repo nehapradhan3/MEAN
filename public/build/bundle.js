@@ -9870,7 +9870,12 @@ var App = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('img', { src: 'https://www.fusemachines.com/assets/img/fm-icn.png', style: { marginLeft: 20, marginTop: 20, width: 50, height: 50 } }),
+        _react2.default.createElement('img', { src: 'https://www.fusemachines.com/assets/img/fm-icn.png', style: { marginLeft: 120, marginTop: 2, marginBottom: 40, width: 50, height: 50 } }),
+        _react2.default.createElement(
+          'span',
+          { style: { marginLeft: 10, marginTop: 20, width: 50, height: 50, fontSize: 50, fontStyle: "italic" } },
+          'Fusemachines Discussion Board '
+        ),
         _react2.default.createElement(_Home2.default, null)
       );
     }
@@ -22616,7 +22621,7 @@ var Zones = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Zones.__proto__ || Object.getPrototypeOf(Zones)).call(this));
 
     _this.state = {
-      selected: 1,
+      selected: 0,
       list: []
     };
     return _this;

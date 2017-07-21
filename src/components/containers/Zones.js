@@ -7,7 +7,7 @@ class Zones extends Component {
   constructor(){
     super()
     this.state = {
-      selected: 1,
+      selected: 0,
       list: []
     }
   }
